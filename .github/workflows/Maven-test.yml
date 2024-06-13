@@ -25,8 +25,16 @@ jobs:
       - name: Install Maven
         run: sudo apt-get install -y maven  # Install Maven
 
+      - name: Download ChromeDriver (optional, if WebDriverManager fails)
+        run: |
+          curl -SL https://chromedriver.chromium.org/LATEST/chromedriver_linux64.zip -o chromedriver.zip
+          unzip chromedriver.zip
+          chmod +x chromedriver  # Make the executable file
+
       - name: Run Selenium Tests
         working-directory: mavenselenium
+        env:  # Optionally set the ChromeDriver path if needed
+          CHROME_DRIVER: /path/to/chromedriver  # Replace with actual path if using downloaded ChromeDriver
         run: mvn test  # Run Maven tests
 
       - name: Generate Selenium Report
