@@ -20,12 +20,12 @@ jobs:
       - name: Install Maven
         run: sudo apt-get update && sudo apt-get install -y maven  # Install Maven
 
-      - name: Run selenium Tests
+      - name: Run Selenium Tests
         working-directory: Spring-Boot-main  # Set the working directory
         run: mvn test  # Run Maven tests
 
-      - name: Generate selenium Report
+      - name: Generate Selenium Report
         uses: actions/upload-artifact@v2
         with:
-          name: junit-report
-          path: 'Spring-Boot-main/target/surefire-reports' 
+          name: selenium-report
+          path: 'Spring-Boot-main/target/surefire-reports'
