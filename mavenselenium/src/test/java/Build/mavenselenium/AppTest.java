@@ -48,11 +48,4 @@ public class AppTest {
         // Assert the title
         assertEquals("Downloads | Selenium", pageTitle);
     }
-
-    @After
-    public void tearDown() {
-        // Close the browser
-        driver.quit();
-        System.out.println("Browser quit successfully.");
-    }
 }
