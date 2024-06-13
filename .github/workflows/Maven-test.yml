@@ -1,4 +1,4 @@
-name: Maven Test
+name: Java Maven Selenium Tests
 
 on:
   workflow_dispatch:
