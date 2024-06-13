@@ -25,7 +25,7 @@ jobs:
       - name: Install Maven
         run: sudo apt-get install -y maven  # Install Maven
 
-      - name: Download ChromeDriver (optional, if WebDriverManager fails)
+      - name: Download ChromeDriver (optional)
         run: |
           curl -SL https://chromedriver.chromium.org/LATEST/chromedriver_linux64.zip -o chromedriver.zip
           unzip chromedriver.zip
