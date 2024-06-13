@@ -19,14 +19,14 @@ jobs:
 
       - name: Set up ChromeDriver
         run: |
-          CHROMEDRIVER_VERSION=$(curl -sS https://chromedriver.storage.googleapis.com/LATEST_RELEASE)
+          CHROMEDRIVER_VERSION=$(curl -sS https://chromedriver.storage.googleapis.com/LATEST_RELEASE_125)
           wget -q -O /tmp/chromedriver.zip https://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip
           unzip -o /tmp/chromedriver.zip -d /tmp
           sudo mv /tmp/chromedriver /usr/local/bin/chromedriver
           sudo chmod +x /usr/local/bin/chromedriver
 
-      - name: Install Chrome browser
-        run: sudo apt-get install google-chrome-stable
+      - name: Update Chrome browser
+        run: sudo apt-get update && sudo apt-get install --only-upgrade google-chrome-stable
 
       - name: Install Maven
         run: sudo apt-get update && sudo apt-get install -y maven  # Install Maven
