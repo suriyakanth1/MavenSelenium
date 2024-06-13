@@ -30,13 +30,14 @@ jobs:
           unzip -o /tmp/chromedriver.zip -d /tmp
           sudo mv /tmp/chromedriver /usr/local/bin/chromedriver
           sudo chmod +x /usr/local/bin/chromedriver
-        shell: /usr/bin/bash
+        shell: bash
         env:
+          CHROMEDRIVER_VERSION: 125.0.6422.142
           JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.11-9/x64
 
       - name: Build and Test with Maven
         run: mvn -f mavenselenium clean test
-        shell: /usr/bin/bash
+        shell: bash
         env:
           JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.11-9/x64
 
