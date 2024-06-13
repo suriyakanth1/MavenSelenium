@@ -6,7 +6,6 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.chrome.ChromeDriver;
 import static org.junit.Assert.assertEquals;
 
@@ -18,7 +17,6 @@ public class AppTest {
     public void setUp() {
         // Set the path to the ChromeDriver executable
         // System.setProperty("webdriver.chrome.driver", "path/to/chromedriver");
-                WebDriverManager.chromedriver().setup();
         // Create a new instance of the ChromeDriver
         driver = new ChromeDriver();
     }
