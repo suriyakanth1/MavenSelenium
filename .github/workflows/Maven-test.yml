@@ -21,6 +21,7 @@ jobs:
         uses: actions/setup-java@v2
         with:
           java-version: '17'
+          distribution: 'temurin'  # or 'adopt' or 'zulu' depending on your preference
 
       - name: Set up ChromeDriver
         run: |
