@@ -10,18 +10,17 @@ on:
 
 jobs:
   build:
-    name: Build and Test
+    name: Maven Build and Test
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
 
       - name: Set up JDK 17
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v2
         with:
           java-version: '17'
-          distribution: 'temurin'  # or 'adopt' or 'zulu' depending on your preference
 
       - name: Install Chrome
         run: |
@@ -29,11 +28,10 @@ jobs:
           sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
           sudo apt-get update
           sudo apt-get install google-chrome-stable
+
       - name: Build and Test with Maven
-        run: mvn -f mavenselenium clean test
+        run: mvn -f mavenselenium/pom.xml clean test
         shell: bash
-        env:
-          JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.11-9/x64
 
       - name: Archive test reports
         uses: actions/upload-artifact@v2
