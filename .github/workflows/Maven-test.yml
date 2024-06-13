@@ -25,14 +25,20 @@ jobs:
 
       - name: Set up ChromeDriver
         run: |
-          CHROMEDRIVER_VERSION=125.0.6422.142  # Update to the latest version
+          CHROMEDRIVER_VERSION=125.0.6422.142
           wget -q -O /tmp/chromedriver.zip https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip
           unzip -o /tmp/chromedriver.zip -d /tmp
           sudo mv /tmp/chromedriver /usr/local/bin/chromedriver
           sudo chmod +x /usr/local/bin/chromedriver
+        shell: /usr/bin/bash
+        env:
+          JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.11-9/x64
 
       - name: Build and Test with Maven
         run: mvn -f mavenselenium clean test
+        shell: /usr/bin/bash
+        env:
+          JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.11-9/x64
 
       - name: Archive test reports
         uses: actions/upload-artifact@v2
