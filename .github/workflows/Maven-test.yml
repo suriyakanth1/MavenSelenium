@@ -1,4 +1,4 @@
-name: Java Maven Selenium Tests
+name: Maven-test
 
 on:
   workflow_dispatch:
@@ -10,12 +10,12 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-      
+
       - name: Set up JDK 17
         uses: actions/setup-java@v2
         with:
           java-version: '17'
-      
+
       - name: Set up ChromeDriver
         run: |
           CHROMEDRIVER_VERSION=$(curl -sS https://chromedriver.storage.googleapis.com/LATEST_RELEASE)
@@ -23,14 +23,14 @@ jobs:
           unzip -o /tmp/chromedriver.zip -d /tmp
           sudo mv /tmp/chromedriver /usr/local/bin/chromedriver
           sudo chmod +x /usr/local/bin/chromedriver
-      
+
       - name: Install Maven
         run: sudo apt-get update && sudo apt-get install -y maven
-      
+
       - name: Run Selenium Tests
         working-directory: mavenselenium
         run: mvn test
-      
+
       - name: Generate Selenium Report
         uses: actions/upload-artifact@v2
         with:
