@@ -23,14 +23,14 @@ jobs:
           java-version: '17'
           distribution: 'temurin'  # or 'adopt' or 'zulu' depending on your preference
 
-      # - name: Set up ChromeDriver
-      #   run: |
-      #     CHROMEDRIVER_VERSION=$(curl -sS https://chromedriver.storage.googleapis.com/LATEST_RELEASE)
-      #     CHROMEDRIVER_VERSION=125.0.6422.142  # Update to the latest version
-      #     wget -q -O /tmp/chromedriver.zip https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip
-      #     unzip -o /tmp/chromedriver.zip -d /tmp
-      #     sudo mv /tmp/chromedriver /usr/local/bin/chromedriver
-      #     sudo chmod +x /usr/local/bin/chromedriver
+      - name: Set up ChromeDriver
+        run: |
+          # CHROMEDRIVER_VERSION=$(curl -sS https://chromedriver.storage.googleapis.com/LATEST_RELEASE)
+          CHROMEDRIVER_VERSION=125.0.6422.142  # Update to the latest version
+          wget -q -O /tmp/chromedriver.zip https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip
+          unzip -o /tmp/chromedriver.zip -d /tmp
+          sudo mv /tmp/chromedriver /usr/local/bin/chromedriver
+          sudo chmod +x /usr/local/bin/chromedriver
 
       - name: Build and Test with Maven
         run: mvn -f mavenselenium clean test
