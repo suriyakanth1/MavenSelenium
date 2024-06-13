@@ -17,16 +17,13 @@ jobs:
           distribution: 'corretto'
           java-version: '17'
 
-      - name: Set up ChromeDriver
-        shell: bash
+      - name: Install Chrome
         run: |
-             wget -N https://chromedriver.storage.googleapis.com/94.0.4606.61/chromedriver_linux64.zip
-             unzip chromedriver_linux64.zip
-             sudo mv chromedriver /usr/local/bin/chromedriver
-             sudo chmod +x /usr/local/bin/chromedriver 
+          sudo apt-get update
+          sudo apt-get install -y google-chrome-stable
 
       - name: Install Maven
-        run: sudo apt-get update && sudo apt-get install -y maven  # Install Maven
+        run: sudo apt-get install -y maven  # Install Maven
 
       - name: Run Selenium Tests
         working-directory: mavenselenium
