@@ -17,7 +17,7 @@ public class AppTest {
     public void setUp() {
         // Set the path to the ChromeDriver executable
         // System.setProperty("webdriver.chrome.driver", "path/to/chromedriver");
-
+                WebDriverManager.chromedriver().setup();
         // Create a new instance of the ChromeDriver
         driver = new ChromeDriver();
     }
