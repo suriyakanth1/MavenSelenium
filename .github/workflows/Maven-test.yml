@@ -21,6 +21,7 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y maven  # Install Maven
 
       - name: Run Selenium Tests
+        working-directory: mavenselenium
         run: mvn test  # Run Maven tests
 
       - name: Generate Selenium Report
